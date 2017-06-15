@@ -1,4 +1,4 @@
-python-qaym: A simply Python wrapper for Qaym API
+python-qaym: A simple Python wrapper for Qaym API
 =================================================
 
 Qaym website: `http://Qaym.com <http://www.qaym.com>`_
