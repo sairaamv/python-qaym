@@ -102,6 +102,8 @@ class Api(object):
         url = '%s/items/%s/images/key=%s' % (self.base_url, str(item_id), self.key)
         data = requests.get(url).json()
         images = []
+        if data is None:
+            return images
         if type(data) == bool:
             return images
         for image in data:
@@ -112,15 +114,17 @@ class Api(object):
     def GetVotes(self, item_id):
         url = '%s/items/%s/votes/key=%s' % (self.base_url, str(item_id), self.key)
         data = requests.get(url).json()
-        votes = {}
+        ups = []
+        downs = []
+        votes = {'up': ups, 'down': downs}
+        if data is None:
+            return votes
         if type(data) == bool:
             return votes
-        ups = []
-        for up in data['up']:
+        for up in data.get('up', []):
             ups.append(Vote.from_json(up))
         votes['up'] = ups
-        downs = []
-        for down in data['down']:
+        for down in data.get('down', []):
             downs.append(Vote.from_json(down))
         votes['down'] = downs
 
