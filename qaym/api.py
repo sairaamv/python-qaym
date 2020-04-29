@@ -1,4 +1,4 @@
-from models import Country, City, Item, Location, Review, Image, Vote, Tag
+from .models import Country, City, Item, Location, Review, Image, Vote, Tag
 import requests
 
 BASE_URL = 'http://api.qaym.com/0.1'
